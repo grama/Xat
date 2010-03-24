@@ -11,35 +11,39 @@ namespace XatServer
 		{
 			Console.WriteLine("Hola, sóc el servidor!");
 
-            Server servidor = new Server("192.168.130.85", 9898);
+            Server servidor = new Server("192.168.130.77", 6969);
 			
 			if (!servidor.Start())
 			{
 				Console.WriteLine("No puc engegar el servidor!");
 			}
-			
-			if (servidor.WaitForAClient())
-			{
-				// Escribim tot el que ens envii el client
-				while (true)
-				{
-                    try
-                    {
-                        Console.WriteLine("El client diu: " + servidor.ReadLine());
-                    }
-                    catch (Exception)
-                    {
+			while(true)
+            {
+			    if (servidor.WaitForAClient())
+			    {
+				    // Escribim tot el que ens envii el client
+    				
+                        try
+                        {
+                            while (true)
+				            {
+                                Console.WriteLine("El client diu: " + servidor.ReadLine());
+                            }
+                        }
+                        catch (Exception)
+                        {
 
-                        Console.WriteLine("El cliente se ha desconectado");
-                        Console.ReadKey(true);
-                        servidor.WaitForAClient();
-                    }
-					
-				}
-				
-				// server.WriteLine("Hi!"); 
-			}
-		}
+                            Console.WriteLine("El cliente se ha desconectado");
+                            Console.ReadKey(true);
+                            servidor.WaitForAClient();
+                        }
+    					
+				    }
+    				
+				    // server.WriteLine("Hi!"); 
+			    }
+        }
+		
 	}
 	
 	public class Server
@@ -72,7 +76,7 @@ namespace XatServer
 			try
 			{
 //				listener = new TcpListener(server_endpoint);
-				listener = new TcpListener(9898);
+				listener = new TcpListener(6969);
 
 				listener.Start(); //start server
 			}

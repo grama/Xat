@@ -9,13 +9,13 @@ namespace XatClient
 	{
 		public static void Main(string[] args)
 		{
-			Client client = new Client("192.168.130.48", 6969);
+			Client client = new Client("192.168.130.95", 6969);
 			
 			if (client.ConnectToServer())
 			{
 				while (true)
 				{
-					client.WriteLine("Hola! Sóc el client enviant un missatge!");
+					client.WriteLine(Console.ReadLine());
 				}
 			}
 		}
@@ -51,7 +51,7 @@ namespace XatClient
 			try
 			{
 				// tcpClient = new TcpClient(server_endpoint);
-                tcpClient = new TcpClient("192.168.130.48", 9898);
+                tcpClient = new TcpClient("192.168.130.95", 6969);
 				
 				netStream = tcpClient.GetStream();
 				readerStream = new StreamReader(netStream);
